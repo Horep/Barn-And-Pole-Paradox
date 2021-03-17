@@ -1,13 +1,13 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import sys
-L_pole = 0.8
+L_pole = 0.9464586434
 L_barn = 1
 
 
 # define relative speed of pole and farmer
-beta_pole = 0.6
-beta_farmer = 0.7
+beta_pole = 0.1
+beta_farmer = 0.5
 
 # Enables red square of death for the fly
 FlyCheck = 0
@@ -53,7 +53,7 @@ S_D_Dash_Array = [["S\'\'"], [-g_farmer*beta_farmer*L_pole/(g_pole*beta_pole),
                               g_farmer*L_pole/(beta_pole*g_pole)],
                              [g_farmer*(L_barn - beta_farmer * L_pole / (g_pole*beta_pole)),
                               g_farmer*(L_pole/(g_pole*beta_pole) - beta_farmer*L_barn)],
-                             [-g_farmer*beta_farmer*L_barn/beta_pole, g_pole*L_barn/beta_pole],
+                             [-g_farmer*beta_farmer*L_barn/beta_pole, g_farmer*L_barn/beta_pole],
                              [g_farmer*L_barn*(1 - beta_farmer/beta_pole),
                               g_farmer*L_barn*(1/beta_pole - beta_farmer)]]
 
@@ -145,9 +145,13 @@ Event_Matrix = [S_Array, S_Dash_Array, S_D_Dash_Array]
 
 # Outputs into the console the reference frame and spacetime event coords
 for X in Event_Matrix:
+    event_names = ['LC', 'RC', 'LO', 'RO']
+    alist = [X[1][1], X[2][1], X[3][1], X[4][1]]
+    alist, event_names = zip(*sorted(zip(alist, event_names)))
     print(f"In reference frame {X[0]}")
     print(f"Left Close  {X[1]}")
     print(f"Right Close {X[2]}")
     print(f"Left Open   {X[3]}")
     print(f"Right Open  {X[4]}")
+    print(event_names)
     print()
