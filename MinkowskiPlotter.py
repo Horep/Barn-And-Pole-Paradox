@@ -1,13 +1,13 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import sys
-L_pole = 0.9464586434
+L_pole = 0.78
 L_barn = 1
 
 
 # define relative speed of pole and farmer
-beta_pole = 0.1
-beta_farmer = 0.5
+beta_pole = 0.3
+beta_farmer = 0.9
 
 # Enables red square of death for the fly
 FlyCheck = 0
