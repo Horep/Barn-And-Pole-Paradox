@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import sys
-L_pole = 0.78
+L_pole = 1
 L_barn = 1
 
 
@@ -10,9 +10,9 @@ beta_pole = 0.3
 beta_farmer = 0.9
 
 # Enables red square of death for the fly
-FlyCheck = 0
+FlyCheck = 1
 # Enables the farmer x'' and t'' axes
-PlotFarmer = 1
+PlotFarmer = 0
 
 # Checks to see if rapidities are greater than 1
 if abs(beta_pole) >= 1 or abs(beta_farmer) >= 1:
@@ -78,10 +78,14 @@ if FlyCheck == 1:
     SquareLeft = [(-S_Array[1][1]+S_Array[3][1])/2, (S_Array[1][1]+S_Array[3][1])/2]
     SquareRight = [L_barn+(S_Array[2][1]-S_Array[3][1])/2, (S_Array[1][1]+S_Array[3][1])/2]
     SquareBot = [L_barn/2, -L_barn/2+S_Array[4][1]]
+    if L_pole < np.sqrt((1-beta_pole)/(1+beta_pole)):
+        squarecolor = 'r'
+    else:
+        squarecolor = 'black'
     plt.fill([SquareTop[0], SquareLeft[0], SquareRight[0]],
-             [SquareTop[1], SquareLeft[1], SquareRight[1]], "r")
+             [SquareTop[1], SquareLeft[1], SquareRight[1]], squarecolor)
     plt.fill([SquareBot[0], SquareLeft[0], SquareRight[0]],
-             [SquareBot[1], SquareLeft[1], SquareRight[1]], "r")
+             [SquareBot[1], SquareLeft[1], SquareRight[1]], squarecolor)
 
 # Plot x' axis
 ax.plot(x_pole, beta_pole*x_pole,
