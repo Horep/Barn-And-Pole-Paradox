@@ -70,24 +70,7 @@ CreateLightLine(-1, 0, 0, 'orange')
 
 # This mess of code produces the light-like lines and red square for the fly
 if FlyCheck == 1:
-    CreateLightLine(1, S_Array[1][0], S_Array[1][1], 'red')
-    CreateLightLine(-1, S_Array[2][0], S_Array[2][1], 'red')
-    CreateLightLine(-1, S_Array[3][0], S_Array[3][1], 'red')
-    CreateLightLine(1, S_Array[4][0], S_Array[4][1], 'red')
-    SquareTop = [L_barn/2, L_barn/2 + S_Array[1][1]]
-    SquareLeft = [(-S_Array[1][1]+S_Array[3][1])/2, (S_Array[1][1]+S_Array[3][1])/2]
-    SquareRight = [L_barn+(S_Array[2][1]-S_Array[3][1])/2, (S_Array[1][1]+S_Array[3][1])/2]
-    SquareBot = [L_barn/2, -L_barn/2+S_Array[4][1]]
-    if L_pole < np.sqrt((1-beta_pole)/(1+beta_pole)):
-        squarecolor = 'r'
-    else:
-        squarecolor = 'black'
-    plt.fill([SquareTop[0], SquareLeft[0], SquareRight[0]],
-             [SquareTop[1], SquareLeft[1], SquareRight[1]], squarecolor)
-    plt.fill([SquareBot[0], SquareLeft[0], SquareRight[0]],
-             [SquareBot[1], SquareLeft[1], SquareRight[1]], squarecolor)
-
-# Plot x' axis
+    
 ax.plot(x_pole, beta_pole*x_pole,
         color='green', marker='.',
         label=r"$\beta_p=$"+f"{np.round(beta_pole,2)}")
