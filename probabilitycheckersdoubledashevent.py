@@ -36,7 +36,7 @@ def probability(r):
         return 1 - np.log(2)
 
 
-N = 10000000
+N = 500
 count = 0
 for i in range(N+1):
     x = random()
