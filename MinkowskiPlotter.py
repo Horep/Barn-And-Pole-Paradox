@@ -6,13 +6,11 @@ L_barn = 1
 
 
 # define relative speed of pole and farmer
-beta_pole = 0.3
-beta_farmer = 0.9
+beta_pole = 0.8
+beta_farmer = -0.3
 
-# Enables red square of death for the fly
-FlyCheck = 1
 # Enables the farmer x'' and t'' axes
-PlotFarmer = 0
+PlotFarmer = 1
 
 # Checks to see if rapidities are greater than 1
 if abs(beta_pole) >= 1 or abs(beta_farmer) >= 1:
@@ -68,12 +66,6 @@ lightlikewidth = 0.1
 CreateLightLine(1, 0, 0, 'orange')
 CreateLightLine(-1, 0, 0, 'orange')
 
-# This mess of code produces the light-like lines and red square for the fly
-if FlyCheck == 1:
-    
-ax.plot(x_pole, beta_pole*x_pole,
-        color='green', marker='.',
-        label=r"$\beta_p=$"+f"{np.round(beta_pole,2)}")
 
 # Plot points at (gamma,0) and (0,gamma).
 ax.plot(g_pole, 0, marker='x', color='blue')
@@ -88,9 +80,16 @@ ax.plot(L_barn, L_pole/(g_pole*beta_pole), marker='x', color='hotpink')
 ax.plot(0, L_barn/(beta_pole), marker='x', color='crimson', label='Open')
 ax.plot(L_barn, L_barn/(beta_pole), marker='x', color='crimson')
 
+# Plot x' axis
+ax.plot(x_pole, beta_pole*x_pole,
+        color='green', marker='.',
+        label=r"$\beta_p=$"+f"{np.round(beta_pole,2)}")
+
 # Plot t' axis
 ax.plot(x_pole*beta_pole, x_pole, color='green', marker='.')
 
+# plot right door at zero in S''
+ax.plot(L_pole/L_barn * g_pole * g_farmer * (beta_farmer*beta_pole - 1), L_pole/L_barn * g_farmer * g_pole * (beta_farmer - beta_pole), marker="x")
 
 if PlotFarmer == 1:
     # Plot x'' axis
