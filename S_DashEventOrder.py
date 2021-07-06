@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
-L_pole = 0.8
+L_pole = 1
 L_barn = 1
 # define relative speed
-x = np.linspace(0.2, 0.99, 2000)
+x = np.linspace(0.2, 1, 2000)
 
 
 def t_lc_dash(beta_p):
@@ -48,6 +48,7 @@ ax.spines['right'].set_color('none')
 # Remove top line of graph
 ax.spines['top'].set_color('none')
 plt.xlim(0.2, 1)
+plt.ylim(-6, 6)
 plt.ylabel("\u03C4\'")
 plt.legend()
 plt.savefig("S_Dash_Time_Diagram.png", dpi=1000,
